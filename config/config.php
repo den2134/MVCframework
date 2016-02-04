@@ -1,6 +1,6 @@
 <?php
 
-Config::set('site_name', 'Your site name');
+Config::set('site_name', 'MVC Framework');
 Config::set('languages', array('en', 'fr'));
 
 Config::set('routes', array(
