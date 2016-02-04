@@ -21,7 +21,7 @@ class Router{
     /**
      * @return mixed
      */
-    public function getControler()
+    public function getController()
     {
         return $this->controler;
     }
