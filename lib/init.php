@@ -21,3 +21,7 @@ function mvcAutoload($class_name){
 
 spl_autoload_register('mvcAutoload');
 require_once(ROOT.DS.'config'.DS.'config.php');
+
+function __($key, $default_val = ''){
+    return Lang::get($key, $default_val);
+}
