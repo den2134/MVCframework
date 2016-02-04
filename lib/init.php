@@ -15,7 +15,7 @@ function mvcAutoload($class_name){
         require_once($model_path);
     }
     else{
-        throw new Excepton('Failed to include class: '.$class_name);
+        throw new Exception('Failed to include class: '.$class_name);
     }
 }
 

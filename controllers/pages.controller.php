@@ -3,7 +3,7 @@
 class PagesController extends Controller{
 
     public function index(){
-        echo 'Pages controller - index()';
+        $this->data['test_content'] = 'Pages controller - index()';
     }
 
     public function view(){
@@ -12,7 +12,7 @@ class PagesController extends Controller{
         if(isset($params[0])){
             $alies = strtolower($params[0]);
 
-            echo "Here will be a page with '{$alies}' alies";
+            $this->data['content'] = "Here will be a page with '{$alies}' alies";
         }
     }
 
