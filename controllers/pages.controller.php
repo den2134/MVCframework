@@ -2,8 +2,13 @@
 
 class PagesController extends Controller{
 
+    public function __construct($data = array()){
+        parent::__construct($data);
+        $this->model = new Page();
+    }
+
     public function index(){
-        $this->data['test_content'] = 'Pages controller - index()';
+        $this->data['pages'] = $this->model->getList();
     }
 
     public function view(){
@@ -12,7 +17,7 @@ class PagesController extends Controller{
         if(isset($params[0])){
             $alies = strtolower($params[0]);
 
-            $this->data['content'] = "Here will be a page with '{$alies}' alies";
+            $this->data['page'] = $this->model->getByAlies($alies);
         }
     }
 
