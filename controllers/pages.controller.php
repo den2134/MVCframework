@@ -21,4 +21,8 @@ class PagesController extends Controller{
         }
     }
 
+    public function adminIndex(){
+        $this->data['pages'] = $this->model->getList();
+    }
+
 }
