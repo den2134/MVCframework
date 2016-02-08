@@ -25,4 +25,49 @@ class PagesController extends Controller{
         $this->data['pages'] = $this->model->getList();
     }
 
+    public function adminEdit(){
+        if($_POST){
+            $id = isset($_POST['id']) ? $_POST['id'] : null;
+            $result = $this->model->save($_POST, $id);
+            if($result)
+                Session::setFlash('Page was saved!');
+            else {
+                Session::setFlash('Error!');
+            }
+            Router::redirect('/admin/pages');
+        }
+
+        if(isset($this->params[0])){
+            $this->data['page'] = $this->model->getById($this->params[0]);
+        } else {
+            Session::setFlash('Wrong page id.');
+            Router::redirect('/admin/pages/');
+        }
+    }
+
+    public function adminAdd(){
+        if($_POST){
+            $result = $this->model->save($_POST);
+            if($result)
+                Session::setFlash('Page was saved!');
+            else {
+                Session::setFlash('Error!');
+            }
+            Router::redirect('/admin/pages');
+        }
+    }
+
+    public function adminDelete(){
+        if(isset($this->params[0])) {
+            $result = $this->model->delete($this->params[0]);
+
+            if($result)
+                Session::setFlash('Page was deleted!');
+            else
+                Session::setFlash('Error!');
+
+            Router::redirect('/admin/pages');
+        }
+    }
+
 }

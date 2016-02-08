@@ -106,4 +106,8 @@ class Router{
     {
         return $this->language;
     }
+
+    public static function redirect($location){
+        header("Location: $location");
+    }
 }
