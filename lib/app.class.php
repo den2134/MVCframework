@@ -26,6 +26,15 @@ class App{
         $controller_class = ucfirst(self::$router->getController()).'Controller';
         $controller_method = strtolower(self::$router->getMethodPrefix().self::$router->getAction());
 
+        $layout = self::$router->getRoute();
+
+        if($layout == 'admin' && Session::get('role') != 'admin'){
+            //die();
+            if($controller_method != 'adminLogin'){
+                Router::redirect('/admin/users/login');
+            }
+        }
+
         // Calling controller's method
 
         $controller_object = new $controller_class();
@@ -39,7 +48,6 @@ class App{
             throw new Exception('Method '.$controller_method.' of class '.$controller_class.' does not exists');
         }
 
-        $layout = self::$router->getRoute();
         $layout_path = VIEW_PATH.DS.$layout.'.html';
         $layout_view_object = new View(compact('content'), $layout_path);
         echo $layout_view_object->render();

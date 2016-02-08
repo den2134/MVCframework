@@ -22,4 +22,8 @@ class ContactsController extends Controller{
         }
     }
 
+    public function adminIndex(){
+        $this->data = $this->model->getList();
+    }
+
 }

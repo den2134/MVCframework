@@ -17,3 +17,5 @@ Config::set('db.host', 'localhost');
 Config::set('db.login', 'root');
 Config::set('db.password', '');
 Config::set('db.name', 'mvc');
+
+Config::set('salt', 'j4fl4nc95pyktnvev9');
